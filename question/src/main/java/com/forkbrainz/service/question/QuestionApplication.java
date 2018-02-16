@@ -1,5 +1,6 @@
 package com.forkbrainz.service.question;
 
+import com.forkbrainz.service.data.McqData;
 import com.forkbrainz.service.data.ugcnet.NetQuestion;
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectRepository;
@@ -26,5 +27,10 @@ public class QuestionApplication {
     @Bean(name = "CsRepository")
     public ObjectRepository<NetQuestion> ugcNetCollection(){
         return database().getRepository(NetQuestion.class);
+    }
+    
+    @Bean(name = "McqDataRepository")
+    public ObjectRepository<McqData> mcqCollection(){
+        return database().getRepository(McqData.class);
     }
 }
