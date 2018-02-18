@@ -7,7 +7,8 @@ package com.forkbrainz.service.question.controller;
 
 import com.forkbrainz.service.data.McqData;
 import com.forkbrainz.service.data.ugcnet.NetQuestion;
-import org.dizitart.no2.Document;
+import com.forkbrainz.service.data.ugcnet.Subject;
+import com.forkbrainz.service.question.util.NetQuestionRequest;
 import org.dizitart.no2.NitriteId;
 import org.dizitart.no2.WriteResult;
 import org.dizitart.no2.objects.ObjectRepository;
@@ -37,7 +38,32 @@ public class UgcNetCsController {
     private ObjectRepository<McqData> collectionMcq;
     
     @PostMapping("/add")
-    public Long addQuestion(@RequestBody NetQuestion question){
+    public Long addQuestion(@RequestBody NetQuestionRequest req){
+        //Create NetQuestion Object
+        NetQuestion question = new NetQuestion();
+        question.setMonth(req.getMonth());
+        question.setYear(req.getYear());
+        question.setTopic(req.getTopic());
+        question.setUnit(req.getUnit());
+        question.setSubject(Subject.valueOf(req.getSubject()));
+        question.setPaper(req.getPaper());
+        question.setQueNo(req.getQueNo());
+        
+        //Create McqData Object
+        McqData data = new McqData();
+        data.setStatement(req.getStatement());
+        data.setOptions(req.getOptions());
+        data.setCorrectOptions(req.getCorrectOptions());
+        data.setDescription(req.getDescription());
+        
+        //Insert McqData in DB
+        WriteResult res = collectionMcq.insert(data);
+        Long dataId = Iterables.firstOrDefault(res).getIdValue();
+        
+        //Add DataId of the inserted value in Question
+        question.setDataId(dataId);
+        
+        //Insert Question in DB
         WriteResult result = collection.insert(question);
         return Iterables.firstOrDefault(result).getIdValue();
     }

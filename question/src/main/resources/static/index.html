@@ -1,16 +1,106 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
         <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="css/index.css"/>
+        <script src="js/angular.min.js"></script>
+        <script src="js/angular-route.min.js"></script>
+        <script src="js/jquery-3.1.0.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/index.js"></script>
     </head>
-    <body>
-        <div>TODO write content</div>
+    <body ng-app="app" ng-controller="rootCtrl" >
+        <div class="container-fluid">
+            <div class="row" >
+            <div class="col-md-3" >
+                <div class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        Year
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <li><a ng-click="changeYear('2012')">2012</a></li>
+                        <li><a ng-click="changeYear('2013')">2013</a></li>
+                        <li><a ng-click="changeYear('2014')">2014</a></li>
+                        <li><a ng-click="changeYear('2015')">2015</a></li>
+                        <li><a ng-click="changeYear('2016')">2016</a></li>
+                        <li><a ng-click="changeYear('2017')">2017</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-3" >
+                <div class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        Month
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <li><a ng-click="changeMonth('January')">January</a></li>
+                        <li><a ng-click="changeMonth('June')">June</a></li>
+                        <li><a ng-click="changeMonth('July')">July</a></li>
+                        <li><a ng-click="changeMonth('August')">August</a></li>
+                        <li><a ng-click="changeMonth('September')">September</a></li>
+                        <li><a ng-click="changeMonth('November')">November</a></li>
+                        <li><a ng-click="changeMonth('December')">December</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-3" >
+                <div class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        Paper
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <!--<li><a ng-repeat="u in csnetJson.pap" ng-value="p.val.id"></a></li>-->
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-3" >
+                <div class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        Dropdown
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row" >
+            <div class="col-md-2">
+                
+            </div>
+            <div class="col-md-5">
+                
+            </div>
+            <div class="col-md-5">
+                
+            </div>
+        </div>
+        <div class="row" >
+            <div class="col-md-2">
+                
+            </div>
+            <div class="col-md-5">
+                
+            </div>
+            <div class="col-md-5">
+                
+            </div>
+        </div>
+        </div>
     </body>
 </html>

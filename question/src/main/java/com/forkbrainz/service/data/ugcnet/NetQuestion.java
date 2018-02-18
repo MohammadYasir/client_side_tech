@@ -5,7 +5,6 @@
  */
 package com.forkbrainz.service.data.ugcnet;
 
-import com.forkbrainz.service.data.McqData;
 import org.dizitart.no2.Document;
 import org.dizitart.no2.mapper.Mappable;
 import org.dizitart.no2.mapper.NitriteMapper;
@@ -23,7 +22,7 @@ public class NetQuestion implements Mappable{
     private String topic;
     private String unit;
     private int queNo;
-    private McqData data;
+    private Long dataId;
 
     @Override
     public Document write(NitriteMapper nm) {
@@ -35,7 +34,7 @@ public class NetQuestion implements Mappable{
         doc.put("topic", getTopic());
         doc.put("unit", getUnit());
         doc.put("queNo", getQueNo());
-        doc.put("data", data.write(nm));
+        doc.put("dataId", getDataId());
         return doc;
     }
 
@@ -49,10 +48,16 @@ public class NetQuestion implements Mappable{
             setTopic(dcmnt.get("topic", String.class));
             setUnit(dcmnt.get("unit", String.class));
             setQueNo(dcmnt.get("queNo", Integer.class));
-            McqData mcq = new McqData();
-            mcq.read(nm, dcmnt);
-            setData(mcq);
+            setDataId(dcmnt.get("dataId", Long.class));
         }
+    }
+
+    public Long getDataId() {
+        return dataId;
+    }
+
+    public void setDataId(Long dataId) {
+        this.dataId = dataId;
     }
     
     public Subject getSubject() {
@@ -109,14 +114,6 @@ public class NetQuestion implements Mappable{
 
     public void setQueNo(int queNo) {
         this.queNo = queNo;
-    }
-
-    public McqData getData() {
-        return data;
-    }
-
-    public void setData(McqData data) {
-        this.data = data;
     }
 
 }
