@@ -1,0 +1,152 @@
+<md-content flex >
+    <md-tabs layout-fill md-stretch-tabs="yes" > 
+        <md-tab layout-fill>
+            <md-tab-label>
+                <md-icon md-svg-icon="img/icons/ic_library_books_grey_48px.svg"></md-icon>
+            </md-tab-label>
+            <md-tab-body layout-fill style="height:100%" >
+                <div layout="column" layout-fill ng-controller="BrowseQuestionController">
+                    <form name="questionForm" ng-submit="questionForm.$valid && submit()">
+                        <div layout="column" layout-align="end center" >
+                            <div style="height: 50px" >
+                                <p class="home-heading">VIEW QUESTIONS</p>
+                            </div>
+                            <div class="home-input-div">
+                                <md-input-container class="home-input">
+                                    <label>Paper</label>
+                                    <md-select required name="paperType" ng-required="true" ng-change="paperValChange()" ng-model="paperVal" >
+                                        <md-option ng-repeat="p in papers" ng-value="p.val.id" >
+                                            {{p.val.name}}
+                                        </md-option>
+                                    </md-select>
+                                    <div ng-messages="questionForm.paperType.$error">
+                                        <div style="font-size: 8px" ng-message="required">Please select a paper 2 or 3.</div>
+                                    </div>
+                                </md-input-container>
+                            </div>
+                            <div class="home-input-div">
+                                <md-input-container class="home-input">
+                                    <label>Paper Name</label>
+                                    <md-select name="paper" ng-required="true" ng-model="paperNameVal" multiple="true" >
+                                        <md-option ng-repeat="pn in paperNames" ng-value="pn.val.paperId" >
+                                            {{pn.val.date.substring(0, 12)}}
+                                        </md-option>
+                                    </md-select>
+                                    <div ng-messages="questionForm.paper.$error">
+                                        <div style="font-size: 8px" ng-message="required">Please select a paper(s).</div>
+                                    </div>
+                                </md-input-container>
+                            </div>
+                            <div class="home-input-div">
+                                <md-input-container class="home-input">
+                                    <label>Units</label>
+                                    <md-select name="unit" ng-required="true" ng-change="unitValChange()" ng-model="unitVal" >
+                                        <md-option ng-repeat="u in units" ng-value="u" >
+                                            {{u.name}}
+                                        </md-option>
+                                    </md-select>
+                                    <div ng-messages="questionForm.unit.$error">
+                                        <div style="font-size: 8px" ng-message="required">Please select a unit.</div>
+                                    </div>
+                                </md-input-container>
+                            </div>
+                            <div class="home-input-div">
+                                <md-input-container class="home-input">
+                                    <label>Topics</label>
+                                    <md-select name="topic" ng-required="true" ng-model="topicVal" multiple="true" >
+                                        <md-option ng-repeat="t in topics" ng-value="t.name" >
+                                            {{t.name}}
+                                        </md-option>
+                                    </md-select>
+                                    <div ng-messages="questionForm.topic.$error">
+                                        <div style="font-size: 8px" ng-message="required">Please select a topic(s).</div>
+                                    </div>
+                                </md-input-container>
+                            </div>
+                            <div style="height: 50px" ></div>
+                            <div class="home-input-div">
+                                <md-button ng-disabled="progress" type="submit" class="md-primary md-raised home-input" >Get Questions</md-button>
+                            </div>
+                            <md-progress-circular  class="md-primary" md-mode="indeterminate" ng-show="progress" md-diameter="20px"></md-progress-circular>
+                            <span ng-class="styleCls">{{msg}}</span>
+                        </div>
+                    </form>
+                </div>
+            </md-tab-body>
+        </md-tab>
+        <md-tab>
+            <md-tab-label>
+                <md-icon md-svg-icon="img/icons/ic_equalizer_grey_48px.svg"></md-icon>
+            </md-tab-label>
+            <md-tab-body layout-fill style="height:100%">
+                <div layout="column" layout-fill ng-controller="AnalyseQuestionController">
+                    <form name="analysisForm" ng-submit="analysisForm.$valid && submit()">
+                        <div layout="column" layout-align="end center" >
+                            <div style="height: 50px" >
+                                <p class="home-heading">ANALYZE PAPERS</p>
+                            </div>
+                            <div class="home-input-div">
+                                <md-input-container class="home-input">
+                                    <label>Paper</label>
+                                    <md-select required name="aPaperType" ng-required="true" ng-change="aPaperValChange()" ng-model="aPaperVal" >
+                                        <md-option ng-repeat="p in aPapers" ng-value="p.val.id" >
+                                            {{p.val.name}}
+                                        </md-option>
+                                    </md-select>
+                                    <div ng-messages="analysisForm.aPaperType.$error">
+                                        <div style="font-size: 8px" ng-message="required">Please select a paper 2 or 3.</div>
+                                    </div>
+                                </md-input-container>
+                            </div>
+                            <div class="home-input-div">
+                                <md-input-container class="home-input">
+                                    <label>Paper Name</label>
+                                    <md-select name="aPaper" ng-required="true" ng-model="aPaperNameVal" multiple="true" >
+                                        <md-option ng-repeat="pn in aPaperNames" ng-value="pn.val.paperId" >
+                                            {{pn.val.date.substring(0, 12)}}
+                                        </md-option>
+                                    </md-select>
+                                    <div ng-messages="analysisForm.aPaper.$error">
+                                        <div style="font-size: 8px" ng-message="required">Please select a paper(s).</div>
+                                    </div>
+                                </md-input-container>
+                            </div>
+                            <div class="home-input-div">
+                                <md-input-container class="home-input">
+                                    <label>Units</label>
+                                    <md-select name="aUnit" ng-required="true" ng-model="aUnitVal" >
+                                        <md-option ng-repeat="u in aUnits" ng-value="u" >
+                                            {{u.name}}
+                                        </md-option>
+                                    </md-select>
+                                    <div ng-messages="analysisForm.aUnit.$error">
+                                        <div style="font-size: 8px" ng-message="required">Please select a unit.</div>
+                                    </div>
+                                </md-input-container>
+                            </div>
+                            <div style="height: 50px" ></div>
+                            <div class="home-input-div">
+                                <md-button ng-disabled="progress" type="submit" class="md-primary md-raised home-input" >Analyze</md-button>
+                            </div>
+                            <md-progress-circular  class="md-primary" md-mode="indeterminate" ng-show="progress" md-diameter="20px"></md-progress-circular>
+                            <span ng-class="styleCls">{{msg}}</span>
+                        </div>
+                    </form>
+                </div>
+            </md-tab-body>
+        </md-tab>
+        <md-tab>
+            <md-tab-label>
+                <md-icon md-svg-icon="img/icons/ic_description_grey_48px.svg"></md-icon>
+            </md-tab-label>
+            <md-tab-body>
+                <div layout="column" layout-fill layout-align="end center">
+                    <div style="height: 50px" >
+                        <p class="home-heading">SYLLABUS</p>
+                    </div>
+                    <div ng-include="'partials/main/syllabus.html'" ></div>
+                </div>
+            </md-tab-body>
+        </md-tab>
+    </md-tabs>
+</md-content>
