@@ -85,14 +85,14 @@ public class UgcNetCsController {
     @PostMapping("/search")
     public ResponseEntity<List<NetQuestion>> searchQuestions(@RequestBody QuestionSearchRequest req){
         ArrayList<ObjectFilter> filersList = new ArrayList<>();
-        if(StringUtils.isBlank(req.getUnit())) {
+        if(!StringUtils.isBlank(req.getUnit())) {
             filersList.add(ObjectFilters.eq("unit", req.getUnit()));
         }
-        if(StringUtils.isBlank(req.getTopic())) {
+        if(!StringUtils.isBlank(req.getTopic())) {
             filersList.add(ObjectFilters.eq("topic", req.getTopic()));
         }
-        if(StringUtils.isBlank(req.getMonth())) {
-            filersList.add(ObjectFilters.eq("unit", req.getMonth()));
+        if(!StringUtils.isBlank(req.getMonth())) {
+            filersList.add(ObjectFilters.eq("month", req.getMonth()));
         }
         if(req.getYear() != 0) {
             filersList.add(ObjectFilters.eq("year", req.getYear()));
@@ -101,7 +101,7 @@ public class UgcNetCsController {
         for (int i = 0; i < filersList.size(); i++) {
             filters[i] = filersList.get(i);
         }
-        Cursor<NetQuestion> cursor = collection.find(ObjectFilters.and(filters));
+            Cursor<NetQuestion> cursor = collection.find(ObjectFilters.and(filters));
         return ResponseEntity.ok().body(cursor.toList());
     }
 }
