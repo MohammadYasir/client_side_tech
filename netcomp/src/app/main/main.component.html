@@ -1,46 +1,46 @@
-<div id="root" >
+<div id="root">
   <!-- Fixed navbar -->
-    <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-primary">
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+  <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-primary">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="#">
         <img src="/assets/images/netcomp_logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
         NetComp</a>
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" routerLink="home">Home </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="analyze">Analyze</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="qpapers">Question Papers</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="printed">Printed Version</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="track">Track Progress</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="account">My Account</a>
-          </li>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="home">Home </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="analyze">Analyze</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="qpapers">Question Papers</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="printed">Printed Version</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="track">Track Progress</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="account">My Account</a>
+        </li>
 
-        </ul>
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
-      </div>
-    </nav>
-
-    <!-- Begin page content -->
-    <div class="container">
-      <router-outlet></router-outlet>
+      </ul>
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
     </div>
+  </nav>
 
-    <footer class="footer">
-      <div class="container">
-        <span class="text-muted">Place sticky footer content here.</span>
-      </div>
-    </footer>
+  <!-- Begin page content -->
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
+
+  <footer class="footer bg-primary">
+    <div class="container">
+      <span class="text-white">Place sticky footer content here.</span>
+    </div>
+  </footer>
 </div>

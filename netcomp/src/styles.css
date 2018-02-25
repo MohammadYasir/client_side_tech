@@ -9,16 +9,15 @@ html {
 }
 #root {
   /* Margin bottom by footer height */
-  margin-bottom: 60px;
+  margin-bottom: 30px;
 }
 .footer {
   position: absolute;
   bottom: 0;
   width: 100%;
   /* Set the fixed height of the footer here */
-  height: 60px;
-  line-height: 60px; /* Vertically center the text there */
-  background-color: #f5f5f5;
+  height: 30px;
+  line-height: 30px; /* Vertically center the text there */
 }
 
 
@@ -43,7 +42,7 @@ code {
 .list-container{
     position: fixed;
     top: 160px;
-    bottom: 70px;
+    bottom: 32px;
     left: 0;
     overflow-y: scroll;
 }
@@ -51,7 +50,7 @@ code {
 .text-container{
     position: fixed;
     top: 160px;
-    bottom: 70px;
+    bottom: 32px;
     right: 0;
     overflow-y: scroll;
 }
