@@ -1,4 +1,5 @@
-import { NgModule }             from '@angular/core';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common'
 import { RouterModule, Routes } from '@angular/router';
 import { MainComponent } from './main.component';
 import { HomeComponent } from './home/home.component';
@@ -7,6 +8,9 @@ import { QpapersComponent } from './qpapers/qpapers.component';
 import { PrintedComponent } from './printed/printed.component';
 import { ProgressComponent } from './progress/progress.component';
 import { AccountComponent } from './account/account.component';
+import { QuestionService } from './home/question.service';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const mainRoutes: Routes = [
   { path: '', component: MainComponent, children: [
@@ -25,7 +29,8 @@ const mainRoutes: Routes = [
     RouterModule.forChild(mainRoutes)
   ],
   exports: [
-    RouterModule
-  ]
+    RouterModule, CommonModule, HttpClientModule, ReactiveFormsModule
+  ],
+  providers: [QuestionService]
 })
 export class MainRoutingModule { }

@@ -1,0 +1,32 @@
+<form [formGroup]="form" (ngSubmit)="search(form.value)">
+  <div class="form-group row">
+    <div class="col-md-3">
+      <label for="exampleFormControlSelect1">Paper</label>
+      <select class="form-control" formControlName=paper [(ngModel)]="form.paper" (change)=onPaperChange($event)>
+        <ng-template ngFor let-paper [ngForOf]="papers" >
+          <option [ngValue]=paper>Paper {{paper.paper}}, {{paper.month}} {{paper.year}}</option>
+        </ng-template>
+      </select>
+    </div>
+    <div class="col-md-3">
+      <label for="exampleFormControlSelect1">Unit</label>
+      <select class="form-control" formControlName=unit [(ngModel)]="form.unit" (change)=onUnitChange($event)>
+        <ng-template ngFor let-unit [ngForOf]="units" >
+          <option [ngValue]=unit>{{unit.name}}</option>
+        </ng-template>
+      </select>
+    </div>
+    <div class="col-md-5">
+      <label for="exampleFormControlSelect1">Topic</label>
+      <select class="form-control" formControlName=topic [(ngModel)]="form.topic" (change)=onTopicChange($event)>
+        <ng-template ngFor let-topic [ngForOf]="topics" >
+          <option [ngValue]=topic>{{topic.name}}</option>
+        </ng-template>
+      </select>
+    </div>
+    <div class="col-md-1">
+      <div style="height: 31px"></div>
+      <button type="submit" class="btn btn-success">Search</button>
+    </div>
+  </div>
+</form>
