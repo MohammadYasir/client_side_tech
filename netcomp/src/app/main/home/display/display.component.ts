@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Question } from '../question';
+import { McqData } from '../mcqdata';
 
 @Component({
   selector: 'app-display',
@@ -7,6 +9,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DisplayComponent implements OnInit {
 
+  @Input() question : Question;
+  @Input() mcqdata : McqData;
   constructor() { }
 
   ngOnInit() {

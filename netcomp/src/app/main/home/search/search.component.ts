@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { papers } from '../../paperdata';
 import { syllabus } from '../../syllabusdata';
@@ -14,6 +14,7 @@ export class SearchComponent implements OnInit {
   units = [];
   topics = [];
   form;
+  @Output() searchEvt : EventEmitter = new EventEmitter();
 
   constructor() { }
 
@@ -27,14 +28,19 @@ export class SearchComponent implements OnInit {
     this.units = this.syllabus.paperII.unit;
     this.topics = this.units[0].topic;
     this.form.unit = this.units[0];
-    this.form.topic = this.topics[0];
+    //this.form.topic = this.topics[0];
   }
 
   search(){
-    console.log("search called")
+    this.searchEvt.emit({
+      unit: this.form.unit.name,
+      topic: this.form.topic.name,
+      month: this.form.paper.month,
+      year: this.form.paper.year
+    });
   }
 
-  onPaperChange(paper){
+  onPaperChange(){
     if (this.form.paper.paper === 2) {
       this.units = this.syllabus.paperII.unit;
     } else {
@@ -42,14 +48,12 @@ export class SearchComponent implements OnInit {
     }
     this.form.unit = this.units[0];
     this.topics = this.units[0].topic;
-    this.form.topic = this.topics[0];
+    //this.form.topic = this.topics[0];
   }
 
-  onUnitChange(unit){
-    console.log(unit.name);
+  onUnitChange(){
+    this.topics = this.form.unit.topic;
+    //this.form.topic = this.topics[0];
   }
 
-  onTopicChange(topic){
-    
-  }
 }

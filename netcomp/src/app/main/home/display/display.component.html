@@ -1,48 +1,43 @@
-<div class="col-md-9 text-container">
-  <div>
+<div class="col-md-9 text-container" >
+  <div *ngIf="question && mcqdata">
     <div class="card text-primary border-primary mb-3" style="padding:20px">
       <div class="card-body">
-        <h5 class="card-title">Question No. 26</h5>
-        <h6 class="card-subtitle mb-2">AUGUST 2016, Paper III</h6>
+        <h5 class="card-title">Question No. {{question.queNo}}</h5>
+        <h6 class="card-subtitle mb-2">{{question.month}}, {{question.year}} {{question.paper}}</h6>
         <dl class="row">
           <dt class="col-sm-3">Unit</dt>
-          <dd class="col-sm-9">Data Communication and Networks</dd>
+          <dd class="col-sm-9">{{question.unit}}</dd>
           <dt class="col-sm-3">Topic(s):</dt>
-          <dd class="col-sm-9">Transmission media. Multiplexing and Concentration. Switching techniques. Polling</dd>
+          <dd class="col-sm-9">{{question.topic}}</dd>
         </dl>
       </div>
     </div>
     <div class="card border-light mb-3" style="padding:20px">
       <div class="card-body">
         <h5 class="card-title">Question</h5>
-        <p class="card-text">Consider the following statements Which of the following is correct?</p>
+        <p class="card-text" [innerHTML]="mcqdata.statement"></p>
       </div>
     </div>
     <div class="card border-light mb-3" style="padding:20px">
       <div class="card-body">
         <h5 class="card-title">Options</h5>
         <ol type="A">
-          <li>A and B are true; C and D are false.</li>
-          <li>A and B are false; C and D are true.</li>
-          <li>A, B, C and D are true.</li>
-          <li>A, B, C and D are false.</li>
+          <ng-template ngFor let-opt [ngForOf]="mcqdata.options" let-i="index" [ngForTrackBy]="trackByFn">
+            <li [innerHTML]='opt'></li>
+          </ng-template>
         </ol>
       </div>
     </div>
     <div class="card border-light mb-3" style="padding:20px">
       <div class="card-body">
         <h5 class="card-title">Answer</h5>
-        <p class="card-text">A and B are true; C and D are false.</p>
+        <p class="card-text" [innerHTML]='mcqdata.correctOptions[0]'></p>
       </div>
     </div>
     <div class="card border-light mb-3" style="padding:20px">
       <div class="card-body">
         <h5 class="card-title">Description</h5>
-        <p class="card-text">We are solving this question. Solution shall be available by 10 July 2017We are solving this question. Solution shall be available by 10 July 2017We are solving this question. Solution shall be available by 10 July 2017We are solving this question.
-          Solution shall be available by 10 July 2017We are solving this question. Solution shall be available by 10 July 2017We are solving this question. Solution shall be available by 10 July 2017We are solving this question. Solution shall be available
-          by 10 July 2017We are solving this question. Solution shall be available by 10 July 2017We are solving this question. Solution shall be available by 10 July 2017We are solving this question. Solution shall be available by 10 July 2017We are
-          solving this question. Solution shall be available by 10 July 2017We are solving this question. Solution shall be available by 10 July 2017We are solving this question. Solution shall be available by 10 July 2017We are solving this question.
-          Solution shall be available by 10 July 2017We are solving this question. </p>
+        <p class="card-text" [innerHTML]='mcqdata.description'></p>
       </div>
     </div>
   </div>

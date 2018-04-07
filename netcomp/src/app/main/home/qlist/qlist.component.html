@@ -1,7 +1,7 @@
 <div class="col-md-3 list-container">
   <div class="list-group">
     <ng-template ngFor let-question [ngForOf]="allQuestions" let-i="index" [ngForTrackBy]="trackByFn">
-      <app-qlistitem [question]="question" (clicked)="onQuestionClicked($event)"></app-qlistitem>
+      <app-qlistitem [question]="question" (click)="onQuestionClicked(question)"></app-qlistitem>
     </ng-template>
   </div>
 </div>

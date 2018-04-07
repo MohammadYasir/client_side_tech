@@ -14,6 +14,7 @@ public class QuestionSearchRequest {
     private String month;
     private String unit;
     private String topic;
+    private String paper;
 
     public int getYear() {
         return year;
@@ -45,5 +46,18 @@ public class QuestionSearchRequest {
 
     public void setTopic(String topic) {
         this.topic = topic;
+    }
+
+    public String getPaper() {
+        return paper;
+    }
+
+    public void setPaper(String paper) {
+        this.paper = paper;
+    }
+
+    @Override
+    public String toString() {
+        return "Year: "+year+" month: "+month+" unit: "+unit+" topic: "+topic;
     }
 }

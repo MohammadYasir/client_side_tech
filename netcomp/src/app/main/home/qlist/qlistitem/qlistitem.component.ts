@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Question } from '../../question';
 
 @Component({
@@ -9,13 +9,8 @@ import { Question } from '../../question';
 export class QlistitemComponent implements OnInit {
 
   @Input() question : Question;
-  @Output() clicked = new EventEmitter();
   constructor() { }
 
   ngOnInit() {
-  }
-
-  onClicked(){
-    this.clicked.emit(this.question);
   }
 }

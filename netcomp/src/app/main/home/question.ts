@@ -1,5 +1,5 @@
 export interface Question {
-  id: number,
+  dataId: number,
   year: number,
   subject: string,
   month: string,

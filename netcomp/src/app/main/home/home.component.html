@@ -1,5 +1,5 @@
-<app-search></app-search>
-<div class="row">
-  <app-qlist [allQuestions]="allQuestions"></app-qlist>
-  <app-display ></app-display>
+<app-search (searchEvt)="search($event)"></app-search>
+<div class="row" >
+  <app-qlist [allQuestions]="allQuestions" (questionclicked)="onQuestionClicked($event)"></app-qlist>
+  <app-display [question]="currentQuestion" [mcqdata]="currentQuestionData" ></app-display>
 </div>

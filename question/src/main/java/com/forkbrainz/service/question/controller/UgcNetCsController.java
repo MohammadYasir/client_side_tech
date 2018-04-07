@@ -97,6 +97,9 @@ public class UgcNetCsController {
         if(req.getYear() != 0) {
             filersList.add(ObjectFilters.eq("year", req.getYear()));
         }
+        if(!StringUtils.isBlank(req.getPaper())) {
+            filersList.add(ObjectFilters.eq("paper", req.getPaper()));
+        }
         ObjectFilter filters[] = new ObjectFilter[filersList.size()];
         for (int i = 0; i < filersList.size(); i++) {
             filters[i] = filersList.get(i);

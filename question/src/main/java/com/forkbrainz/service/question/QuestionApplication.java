@@ -41,7 +41,7 @@ public class QuestionApplication {
     public WebMvcConfigurer corsConfigurer() {
         return new WebMvcConfigurerAdapter() {
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**").allowedOrigins("http://localhost:4200");
+                registry.addMapping("/**").allowedOrigins("http://localhost:4200","http://localhost:8383");
             }
         };
     }

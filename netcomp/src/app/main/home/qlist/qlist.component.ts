@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { NgForOf } from '@angular/common';
 import { Question } from '../question';
 
@@ -10,12 +10,13 @@ import { Question } from '../question';
 export class QlistComponent implements OnInit {
 
   @Input() allQuestions: Question[] = [];
+  @Output() questionclicked : EventEmitter<Question> = new EventEmitter<Question>();
   constructor() { }
 
   ngOnInit() {
   }
 
-  onQuestionClicked(){
-    console.log("Clicked")
+  onQuestionClicked(question){
+    this.questionclicked.emit(question);
   }
 }

@@ -2,7 +2,7 @@
   <div class="form-group row">
     <div class="col-md-3">
       <label for="exampleFormControlSelect1">Paper</label>
-      <select class="form-control" formControlName=paper [(ngModel)]="form.paper" (change)=onPaperChange($event)>
+      <select class="form-control" formControlName=paper [(ngModel)]="form.paper" (change)=onPaperChange()>
         <ng-template ngFor let-paper [ngForOf]="papers" >
           <option [ngValue]=paper>Paper {{paper.paper}}, {{paper.month}} {{paper.year}}</option>
         </ng-template>
@@ -10,15 +10,16 @@
     </div>
     <div class="col-md-3">
       <label for="exampleFormControlSelect1">Unit</label>
-      <select class="form-control" formControlName=unit [(ngModel)]="form.unit" (change)=onUnitChange($event)>
-        <ng-template ngFor let-unit [ngForOf]="units" >
-          <option [ngValue]=unit>{{unit.name}}</option>
+      <select class="form-control" formControlName=unit [(ngModel)]="form.unit" (change)=onUnitChange($event.target.value)>
+        <ng-template ngFor let-unit [ngForOf]="units" let-i="index">
+          <option [ngValue]='unit'>{{unit.name}}</option>
         </ng-template>
       </select>
     </div>
     <div class="col-md-5">
       <label for="exampleFormControlSelect1">Topic</label>
-      <select class="form-control" formControlName=topic [(ngModel)]="form.topic" (change)=onTopicChange($event)>
+      <select class="form-control" formControlName=topic [(ngModel)]="form.topic" >
+        <option selected >All topics</option>
         <ng-template ngFor let-topic [ngForOf]="topics" >
           <option [ngValue]=topic>{{topic.name}}</option>
         </ng-template>
